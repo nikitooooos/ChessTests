@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import ui.pages.MerchPage;
 
 import static io.qameta.allure.Allure.step;
-import static ui.pages.MerchPage.searchValue;
 import static ui.pages.MerchPage.urlMerch;
 
 @Owner("Nikita Postnikov")
@@ -21,7 +20,7 @@ public class MerchTest extends TestBase {
     MerchPage merchPage = new MerchPage();
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Проверка открытия страницы с мерчем")
+    @DisplayName("Проверка наличия категорий товаров на странице с мерчем")
     void checkMerchPage(){
     step("Открываем главную страницу", () -> {
         merchPage.openPage();
@@ -32,28 +31,8 @@ public class MerchTest extends TestBase {
     step("Проверяем, что открыли страницу с мерчем", () -> {
         merchPage.checkPageIsOpen(urlMerch);
     });
-    }
-    @Test
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Поиск товара")
-    void searchMerch(){
-    step("Открываем главную страницу", () -> {
-        merchPage.openPage();
-    });
-    step("Переходим на страницу с мерчем, нажатием на кнопку 'Мерч' на верхней панели", () -> {
-        merchPage.openMerchPage();
-    });
-    step("Проверяем, что открыли страницу с мерчем", () -> {
-        merchPage.checkPageIsOpen(urlMerch);
-    });
-    step("Открываем поисковый контейнер", () -> {
-        merchPage.openSearch();
-    });
-    step("Вводим значение 'Cup' в поле поиска", () -> {
-        merchPage.searchProduct(searchValue);
-    });
-    step("Проверяем результат поиска", () -> {
-        merchPage.checkResultProduct();
+    step("Проверяем, что категории товаров на странице отображаются", () -> {
+        merchPage.checkCategory();
     });
     }
     @Test

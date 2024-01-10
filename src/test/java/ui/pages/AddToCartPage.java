@@ -8,12 +8,12 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AddToCartPage {
-    private static final String URL_PRODUCT = "https://tarkovmerchstore.com/product/arena-t-shirt";
+    private static final String URL_PRODUCT = "https://tarkovmerchstore.com/ru/product/arena-t-shirt";
     SelenideElement
-            chooseColor = $("#optionsContainer .product-form [title=\"Black\"]");
-    SelenideElement chooseSize = $("#optionsContainer .product-form .option [title=\"44-46\"]");
-    SelenideElement addCartButton = $(byText("Add to cart"));
-    SelenideElement toCartButton = $(".add-to-cart-block-desktop .cart-btn");
+            chooseColor = $("#optionsContainer .product-form [title=\"Черный\"]"),
+            chooseSize = $("#optionsContainer .product-form .option [title=\"44-46\"]"),
+            addCartButton = $(byText("В корзину")),
+            toCartButton = $(".cart-container .to-cart-btn");
     public AddToCartPage openPage() {
         open(URL_PRODUCT);
         return this;
@@ -31,7 +31,7 @@ public class AddToCartPage {
     }
 
     public AddToCartPage checkCart() {
-        toCartButton.shouldBe(visible).shouldHave(text("Add to cart"));
+        toCartButton.shouldBe(visible).shouldHave(text("В корзине"));
         return this;
     }
 }

@@ -14,7 +14,7 @@ import static io.qameta.allure.Allure.step;
 @Story("Главная страница arena.tarkov.com")
 @Tags({@Tag("ui")})
 
-public class MainPageTests extends TestBase {
+public class MainTests extends TestBase {
     MainPage mainPage = new MainPage();
 
     @Test

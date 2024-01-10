@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public interface TarkovArenaButtons {
-    static Stream<Arguments> tarkovArenaButtonsTest() {
+    static Stream <Arguments> tarkovArenaButtonsTest() {
         return Stream.of(
                 Arguments.of(Language.RU, List.of("Новости", "Поддержка", "Мерч", "Киберспорт", "Рейтинг")),
                 Arguments.of(Language.EN, List.of("News", "Support", "Merch", "Esports", "Rating")),
