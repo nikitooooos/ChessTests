@@ -22,8 +22,9 @@ import static io.qameta.allure.Allure.step;
 
 public class LanguageTest implements TarkovArenaButtons {
     LanguagePage languagePage = new LanguagePage();
-    @DisplayName("Проверка отображения кнопок верхней панели")
+
     @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Проверка отображения кнопок верхней панели")
     @ParameterizedTest(name = "Проверка отображения кнопок верхней панели для языка {0}")
     @MethodSource("tarkovArenaButtonsTest")
     void tarkovArenaButtonsTest(Language language, List<String> expectedButtons) {
