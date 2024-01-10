@@ -4,42 +4,34 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AddToCartPage {
-
-    private static final String URL_PRODUCT = "/product/arena-t-shirt";
-
+    private static final String URL_PRODUCT = "https://tarkovmerchstore.com/product/arena-t-shirt";
     SelenideElement
-            chooseColor = $x("//div[text()=\"Выберите размер\"]"),
-            chooseSize = $(".recaptcha .ui-product-page-sizes-chooser-item_enabled", 0),
-            addCartButton = $(".cart-add"),
-            popupText = $(".d-modal__frame .d-modal__header"),
-            toCartButton = $(".to-cart-btn"),
-            confirmForm = $(".form-flex");
-
+            chooseColor = $("#optionsContainer .product-form [title=\"Black\"]");
+    SelenideElement chooseSize = $("#optionsContainer .product-form .option [title=\"44-46\"]");
+    SelenideElement addCartButton = $(byText("Add to cart"));
+    SelenideElement toCartButton = $(".add-to-cart-block-desktop .cart-btn");
     public AddToCartPage openPage() {
         open(URL_PRODUCT);
         return this;
     }
 
     public AddToCartPage choseSizeProduct() {
-        chooseColor.click();
-        chooseSize.click();
+        chooseColor.shouldBe(visible).click();
+        chooseSize.shouldBe(visible).click();
         return this;
     }
 
     public AddToCartPage addProductToCart() {
-        addCartButton.shouldBe(visible).click();
-        return this;
+        addCartButton.shouldBe(visible).doubleClick();
+         return this;
     }
 
     public AddToCartPage checkCart() {
-        toCartButton.shouldBe(visible).click();
-        return this;
-    }
-    public AddToCartPage checkPopup() {
-        popupText.shouldHave(text("Confirm Order"));
+        toCartButton.shouldBe(visible).shouldHave(text("Add to cart"));
         return this;
     }
 }

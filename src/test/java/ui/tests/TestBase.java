@@ -18,11 +18,12 @@ public class TestBase {
     @BeforeAll
     static void configure() {
         DriverSettings.configure();
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.holdBrowserOpen = true;
     }
 
     @BeforeEach
     void addListener() {
-        Configuration.holdBrowserOpen = true;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 

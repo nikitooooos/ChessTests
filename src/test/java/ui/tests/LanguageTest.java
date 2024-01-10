@@ -1,8 +1,6 @@
 package ui.tests;
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -22,9 +20,10 @@ import static io.qameta.allure.Allure.step;
 @Tags({@Tag("ui")})
 
 
-public class TarkovArenaLanguageTest implements TarkovArenaButtons {
+public class LanguageTest implements TarkovArenaButtons {
     LanguagePage languagePage = new LanguagePage();
     @DisplayName("Проверка отображения кнопок верхней панели")
+    @Severity(SeverityLevel.BLOCKER)
     @ParameterizedTest(name = "Проверка отображения кнопок верхней панели для языка {0}")
     @MethodSource("tarkovArenaButtonsTest")
     void tarkovArenaButtonsTest(Language language, List<String> expectedButtons) {

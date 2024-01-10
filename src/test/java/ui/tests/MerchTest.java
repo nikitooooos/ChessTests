@@ -1,8 +1,6 @@
 package ui.tests;
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -22,6 +20,7 @@ public class MerchTest extends TestBase {
 
     MerchPage merchPage = new MerchPage();
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Проверка открытия страницы с мерчем")
     void checkMerchPage(){
     step("Открываем главную страницу", () -> {
@@ -35,6 +34,7 @@ public class MerchTest extends TestBase {
     });
     }
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Поиск товара")
     void searchMerch(){
     step("Открываем главную страницу", () -> {
@@ -57,7 +57,8 @@ public class MerchTest extends TestBase {
     });
     }
     @Test
-    @DisplayName("Проветка наличия товаров на странице с мерчем")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Проверка наличия товаров на странице с мерчем")
     void checkProducts(){
     step("Открываем главную страницу", () -> {
         merchPage.openPage();
@@ -68,15 +69,8 @@ public class MerchTest extends TestBase {
     step("Проверяем, что открыли страницу с мерчем", () -> {
         merchPage.checkPageIsOpen(urlMerch);
     });
-    step("Открываем поисковый контейнер", () -> {
-        merchPage.openSearch();
-    });
-    step("Вводим значение 'Cup' в поле поиска", () -> {
-        merchPage.searchProduct(searchValue);
-    });
-    step("Проверяем результат поиска", () -> {
-        merchPage.checkResultProduct();
+    step("Проверяем, что товар на странице отображается", () -> {
+        merchPage.checkProduct();
     });
     }
-
 }

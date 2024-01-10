@@ -31,7 +31,7 @@ public class AddProductToCartTests extends TestBase {
             addToCartPage.addProductToCart();
         });
         step("Проверяем добавление товара в корзину", () -> {
-            addToCartPage.checkPopup();
+            addToCartPage.checkCart();
         });
     }
 }
