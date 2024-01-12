@@ -16,22 +16,21 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase implements TarkovArenaButtons {
 
-    public static String env = System.getProperty("env", "local");
     @BeforeAll
     static void configure() {
         Configuration.baseUrl = "https://arena.tarkov.com/";
-        Configuration.browser = System.getProperty("browserName", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "120.0");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion","100.0");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        if (env.equals("remote")) {
-            Configuration.remote = System.getProperty("remoteUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                    "enableVNC", true,
-                    "enableVideo", true
-            ));
-            Configuration.browserCapabilities = capabilities;
-        }
+        Configuration.holdBrowserOpen = false;
+        Configuration.remote = System.getProperty("selenoidAddress", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
     }
 
     @BeforeEach
@@ -42,11 +41,11 @@ public class TestBase implements TarkovArenaButtons {
     @AfterEach
     void addAttachments() {
         Attach.screenshotAs("Last screenshot");
+        if (!Configuration.browser.equalsIgnoreCase("firefox")){
+            Attach.browserConsoleLogs();
+        }
         Attach.pageSource();
-        Attach.browserConsoleLogs();
-        if (env.equals("remote"))
-            Attach.addVideo();
-
+        Attach.addVideo();
         closeWebDriver();
     }
 }
