@@ -8,12 +8,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ui.helpers.Attach;
+import ui.pages.components.TarkovArenaButtons;
 
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class TestBase {
+public class TestBase implements TarkovArenaButtons {
 
     public static String env = System.getProperty("env", "local");
     @BeforeAll

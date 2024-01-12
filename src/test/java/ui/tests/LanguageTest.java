@@ -18,7 +18,7 @@ import static io.qameta.allure.Allure.step;
 @Feature("UI тесты arena.tarkov.com")
 @Story("Главная страница arena.tarkov.com")
 
-public class LanguageTest implements TarkovArenaButtons {
+public class LanguageTest extends TestBase {
     LanguagePage languagePage = new LanguagePage();
 
     @Severity(SeverityLevel.BLOCKER)
