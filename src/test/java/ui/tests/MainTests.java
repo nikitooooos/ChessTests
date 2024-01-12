@@ -12,7 +12,6 @@ import static io.qameta.allure.Allure.step;
 @Owner("Nikita Postnikov")
 @Feature("UI тесты arena.tarkov.com")
 @Story("Главная страница arena.tarkov.com")
-@Tags({@Tag("ui")})
 
 public class MainTests extends TestBase {
     MainPage mainPage = new MainPage();

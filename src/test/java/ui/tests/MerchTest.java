@@ -12,7 +12,6 @@ import static io.qameta.allure.Allure.step;
 @Owner("Nikita Postnikov")
 @Feature("UI тесты arena.tarkov.com")
 @Story("Страница с мерчем")
-@Tags({@Tag("ui")})
 
 public class MerchTest extends TestBase {
 

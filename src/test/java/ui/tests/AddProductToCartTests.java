@@ -12,7 +12,6 @@ import static io.qameta.allure.Allure.step;
 @Owner("Nikita Postnikov")
 @Feature("UI тесты arena.tarkov.com")
 @Story("Добавление товара в корзину")
-@Tags({@Tag("ui")})
 
 public class AddProductToCartTests extends TestBase {
     AddToCartPage addToCartPage = new AddToCartPage();
