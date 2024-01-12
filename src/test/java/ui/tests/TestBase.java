@@ -6,18 +6,31 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import ui.drivers.DriverSettings;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import ui.helpers.Attach;
 
-import static com.codeborne.selenide.Selenide.clearBrowserCookies;
-import static com.codeborne.selenide.Selenide.clearBrowserLocalStorage;
-import static io.qameta.allure.Allure.step;
+import java.util.Map;
+
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
+    public static String env = System.getProperty("env", "local");
     @BeforeAll
     static void configure() {
-        DriverSettings.configure();
+        Configuration.baseUrl = "https://arena.tarkov.com/";
+        Configuration.browser = System.getProperty("browserName", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "120.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        if (env.equals("remote")) {
+            Configuration.remote = System.getProperty("remoteUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                    "enableVNC", true,
+                    "enableVideo", true
+            ));
+            Configuration.browserCapabilities = capabilities;
+        }
     }
 
     @BeforeEach
@@ -30,10 +43,9 @@ public class TestBase {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        Attach.addVideo();
-        step("Очищаем cookies", () -> {
-            clearBrowserCookies();
-            clearBrowserLocalStorage();
-        });
+        if (env.equals("remote"))
+            Attach.addVideo();
+
+        closeWebDriver();
     }
 }

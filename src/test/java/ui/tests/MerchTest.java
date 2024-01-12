@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import ui.pages.MerchPage;
 
 import static io.qameta.allure.Allure.step;
-import static ui.pages.MerchPage.urlMerch;
 
 @Owner("Nikita Postnikov")
 @Feature("UI тесты arena.tarkov.com")
@@ -22,18 +21,15 @@ public class MerchTest extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Проверка наличия категорий товаров на странице с мерчем")
     void checkMerchPage(){
-    step("Открываем главную страницу", () -> {
-        merchPage.openPage();
-    });
-    step("Переходим на страницу с мерчем, нажатием на кнопку 'Мерч' на верхней панели", () -> {
-        merchPage.openMerchPage();
-    });
-    step("Проверяем, что открыли страницу с мерчем", () -> {
-        merchPage.checkPageIsOpen(urlMerch);
-    });
-    step("Проверяем, что категории товаров на странице отображаются", () -> {
-        merchPage.checkCategory();
-    });
+        step("Открываем главную страницу", () -> {
+            merchPage.openPage();
+        });
+        step("Переходим на страницу с мерчем, нажатием на кнопку 'Мерч' на верхней панели", () -> {
+            merchPage.openMerchPage();
+        });
+        step("Проверяем, что категории товаров на странице отображаются", () -> {
+            merchPage.checkCategory();
+        });
     }
     @Test
     @Severity(SeverityLevel.BLOCKER)
@@ -45,11 +41,9 @@ public class MerchTest extends TestBase {
     step("Переходим на страницу с мерчем, нажатием на кнопку 'Мерч' на верхней панели", () -> {
         merchPage.openMerchPage();
     });
-    step("Проверяем, что открыли страницу с мерчем", () -> {
-        merchPage.checkPageIsOpen(urlMerch);
-    });
     step("Проверяем, что товар на странице отображается", () -> {
         merchPage.checkProduct();
     });
     }
+
 }

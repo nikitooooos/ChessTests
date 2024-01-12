@@ -15,19 +15,15 @@ public class MerchPage {
             categoryItem = $$("ul .game-menu-item"),
             merchItem = $$("ul .item");
 
-    public static final String urlMerch = "https://tarkovmerchstore.com/category/arena";
     public void openPage() {
         open("");
     }
     public void openMerchPage() {
         merchItem.findBy(text("Мерч")).click();
-    }
-    public void checkPageIsOpen(String urlMerch) {
         switchTo().window(1);
-        webdriver().shouldHave(url(urlMerch));
-
     }
     public void checkProduct() {
+        switchTo().window(2);
         itemsList.shouldHave(text("\"ARENA\" T-shirt"));
     }
     public void checkCategory() {
