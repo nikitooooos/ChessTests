@@ -23,7 +23,6 @@ public class MerchPage {
         switchTo().window(1);
     }
     public void checkProduct() {
-        switchTo().window(2);
         itemsList.shouldHave(text("\"ARENA\" T-shirt"));
     }
     public void checkCategory() {
