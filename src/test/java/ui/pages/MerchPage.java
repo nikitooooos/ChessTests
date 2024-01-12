@@ -6,7 +6,6 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class MerchPage {
     SelenideElement
@@ -15,8 +14,9 @@ public class MerchPage {
             categoryItem = $$("ul .game-menu-item"),
             merchItem = $$("ul .item");
 
-    public void openPage() {
+    public MerchPage openPage() {
         open("");
+        return this;
     }
     public void openMerchPage() {
         merchItem.findBy(text("Мерч")).click();

@@ -17,10 +17,10 @@ public class LanguagePage {
     ElementsCollection
             languageItem = $$(".selector .outer .submenu .inner li" ),
             buttons = $$("ul .item");
-    private static final String url = "https://arena.tarkov.com";
 
-    public void openPage() {
-        open(url);
+    public LanguagePage openPage() {
+        open("");
+        return this;
     }
     public void openLanguageMenu() {
         languageMenu.click();

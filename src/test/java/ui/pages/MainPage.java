@@ -24,9 +24,9 @@ public class MainPage {
     title5 = $$(".rank .lead"),
     title6 = $$(".arsenal .lead"),
     title7 = $$(".buy .lead");
-
-    public void openPage() {
+    public MainPage openPage() {
         open("");
+        return this;
     }
     public void openMyAccount() {
         accountMenu.click();
