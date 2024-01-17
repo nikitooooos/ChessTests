@@ -50,6 +50,7 @@ public class CartTests extends TestBase {
         });
         step("Выбираем вид доставки", () -> {
             cartPage.setDelivery();
+
         });
         step("Выбираем способ оплаты", () -> {
             cartPage.setPayment();
