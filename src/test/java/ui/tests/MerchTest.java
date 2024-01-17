@@ -14,10 +14,11 @@ import static io.qameta.allure.Allure.step;
 public class MerchTest extends TestBase {
 
     MerchPage merchPage = new MerchPage();
+
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Проверка наличия категорий товаров на странице с мерчем")
-    void checkMerchPage(){
+    void checkMerchPage() {
         step("Открываем главную страницу", () -> {
             merchPage.openPage();
         });
@@ -28,19 +29,19 @@ public class MerchTest extends TestBase {
             merchPage.checkCategory();
         });
     }
+
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Проверка наличия товаров на странице с мерчем")
-    void checkProducts(){
-    step("Открываем главную страницу", () -> {
-        merchPage.openPage();
-    });
-    step("Переходим на страницу с мерчем, нажатием на кнопку 'Мерч' на верхней панели", () -> {
-        merchPage.openMerchPage();
-    });
-    step("Проверяем, что товар на странице отображается", () -> {
-        merchPage.checkProduct();
-    });
+    void checkProducts() {
+        step("Открываем главную страницу", () -> {
+            merchPage.openPage();
+        });
+        step("Переходим на страницу с мерчем, нажатием на кнопку 'Мерч' на верхней панели", () -> {
+            merchPage.openMerchPage();
+        });
+        step("Проверяем, что товар на странице отображается", () -> {
+            merchPage.checkProduct();
+        });
     }
-
 }

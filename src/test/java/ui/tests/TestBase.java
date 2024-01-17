@@ -16,8 +16,10 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class TestBase {
 
     public static String env = System.getProperty("env", "local");
+
     @BeforeAll
     static void configure() {
+        Configuration.holdBrowserOpen = false;
         Configuration.baseUrl = "https://arena.tarkov.com/";
         Configuration.browser = System.getProperty("browserName", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "120.0");

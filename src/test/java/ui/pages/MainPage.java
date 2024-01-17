@@ -16,24 +16,28 @@ public class MainPage {
             tikTokButton = $(".social .social_item [alt=\"TikTok\"]"),
             twitchButton = $(".social .social_item [alt=\"Twitch\"]");
 
-    ElementsCollection userButtons = $$(".user-menu-btns .inner .name_button" ),
-    title1 = $$(".welcome .lead"),
-    title2 = $$(".bets .lead"),
-    title3 = $$(".equipment .lead"),
-    title4 = $$(".skills  .lead"),
-    title5 = $$(".rank .lead"),
-    title6 = $$(".arsenal .lead"),
-    title7 = $$(".buy .lead");
+    ElementsCollection userButtons = $$(".user-menu-btns .inner .name_button"),
+            title1 = $$(".welcome .lead"),
+            title2 = $$(".bets .lead"),
+            title3 = $$(".equipment .lead"),
+            title4 = $$(".skills  .lead"),
+            title5 = $$(".rank .lead"),
+            title6 = $$(".arsenal .lead"),
+            title7 = $$(".buy .lead");
+
     public MainPage openPage() {
         open("");
         return this;
     }
+
     public void openMyAccount() {
         accountMenu.click();
     }
+
     public void checkLoginAndRegistration() {
         userButtons.filter(visible).shouldHave(texts("Войти", "Регистрация"));
     }
+
     public void checkTitle() {
         title1.shouldHave(texts("ВЕЛКАМ ТУ АРЕНА, РЕБЯТА!"));
         title2.shouldHave(texts("Ставки сделаны"));
@@ -43,6 +47,7 @@ public class MainPage {
         title6.shouldHave(texts("Большой арсенал"));
         title7.shouldHave(texts("Escape from Tarkov: Arena"));
     }
+
     public MainPage checkSocialNetworkButton() {
         vkButton.should(appear);
         youtubeButton.should(appear);

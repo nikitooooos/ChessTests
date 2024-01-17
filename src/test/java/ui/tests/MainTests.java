@@ -40,6 +40,7 @@ public class MainTests extends TestBase {
             mainPage.checkSocialNetworkButton();
         });
     }
+
     @Test
     @DisplayName("Проверка отображения заголовков")
     @Severity(SeverityLevel.BLOCKER)
